@@ -1,5 +1,8 @@
 #include <iostream>
 #include <math.h>
+#include <iomanip>
+
+#define PI 3.1416
 
 using namespace std;
 
@@ -7,6 +10,8 @@ int menu();
 int Eluno();
 int ElDos();
 int ElTres();
+bool Primo(int);
+void dimensiones(double, double, double);
 
 int main(){
     char ejecucion = 'y';
@@ -40,7 +45,7 @@ int main(){
 
 int menu(){
     int opcion=0;
-    cout<<"Bienvenido al Laboratorio 2 de Programación III."<<endl;
+    cout<<setw(18)<<"Bienvenido al Laboratorio 2 de Programación III."<<endl;
     cout << "/****Menu****\\" << endl;
     cout << "1. Ejercicio 1." << endl;
     cout << "2. Ejercicio 2." << endl;
@@ -60,13 +65,14 @@ int acum=1;
 int impar = 1;
         while(acum<=limite){
                 cubo = 0;
-                cout<<"\n"<<acum<<"^3 = ";
+                cout<<setw(18)<<acum<<"^3 = ";
         for (int i = 0; i < acum; i++){
                 cout<<impar;
         if(i < acum - 1)
                 cout<<"+";
                 cubo = cubo + impar;
-        impar = impar+2;}
+            impar = impar+2;
+        }
         cout<<"="<<cubo<<endl;
         acum++;
         }
@@ -77,20 +83,37 @@ return 0;
 }
 
 int ElDos(){
-    int a, b, c;
+    double a, b, c, s, area;
     cout<<"Ingrese el primer lado: ";
     cin>>a;
     cout<<"Ingrese el segundo lado: ";
     cin>>b;
     cout<<"Ingrese el tercer lado: ";
     cin>>c;
+    cout<<endl;
 
     if(a*a + b*b == c*c || a*a + c*c == b*b || b*b + c*c == a*a){
-    cout<<"Forman un triángulo rectángulo"<<endl;
-    }else{
-        cout<<"No forman un triangulo rectangulo!!!"<<endl;
-    }
+        cout<<"Forman un triángulo rectángulo"<<endl<<endl;
+        s=((a+b+c)/2);
+        area = sqrt(s * (s - a) * (s - b) * (s - c));
+        
+        cout<<"El área del triangulo es: "<<area<<endl<<endl;
 
+        cout<<setw(18)<<"Angulos Formados: "<<endl;
+        dimensiones(a,b,c);
+        dimensiones(b,a,c);
+        dimensiones(c,b,a); 
+
+    }else{
+        cout<<"No forman un triangulo rectangulo!!!"<<endl<<endl;
+    }
+}
+
+void dimensiones(double x, double y, double z){
+    double angulo = 0;
+    angulo = acos(((x*x*-1)+y*y+z*z)/(2*y*z));
+    angulo = (angulo*180)/PI;
+    cout<<angulo<<endl;
 }
 
 int ElTres(){
@@ -111,21 +134,17 @@ int ElTres(){
     }
             
 
-        /*for (int c = 1; c <array[n]; c++){
-            if(n % c == 0){
-                a++;                           
-            }
-            if(a != 2){
-                d=((c+n)/c);
-                k=d+c;
-            }else{
-
-            }
-        }*/
-	   //cout<<"/*/*/*/"<<d<<endl;
-	   
-	   
-    			
-	//cout<<"La suma de sus divisores es: "<<k<<endl;
 return 0;
 }
+
+bool primo(int n){
+
+    if(n % 2 == 0) return false;
+
+    for(int i = 0; i * i <= n; i += 2){
+        if(i % n == 0) return false;
+    }
+
+    return true;
+}
+
