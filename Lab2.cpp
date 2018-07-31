@@ -77,6 +77,19 @@ return 0;
 }
 
 int ElDos(){
+    int a, b, c;
+    cout<<"Ingrese el primer lado: ";
+    cin>>a;
+    cout<<"Ingrese el segundo lado: ";
+    cin>>b;
+    cout<<"Ingrese el tercer lado: ";
+    cin>>c;
+
+    if(a*a + b*b == c*c || a*a + c*c == b*b || b*b + c*c == a*a){
+    cout<<"Forman un triángulo rectángulo"<<endl;
+    }else{
+        cout<<"No forman un triangulo rectangulo!!!"<<endl;
+    }
 
 }
 
@@ -87,17 +100,32 @@ int ElTres(){
 	cout<<"Ingrese el Número a utilizar."<<endl;
 	cin>>n;
 	k=0;
-	for(int i=1;i<=n;i++){
-		if(n % i == 0){
-			cout<<i<<endl<<endl;
-			acum = i;
-			d = ((i + n)/i);
+    int a = 0;
+    int array[n];
 
-cout<<d<<endl;			
-			
-		}
-		
-	}			
-	//cout<<"La suma de sus divisores es: "<<d<<endl;
+    for(int i=0;i<=n;i++){
+        if(n % i == 0){
+            array[i]=i;
+            cout<<array[i]<<endl;   
+        }
+    }
+            
 
+        /*for (int c = 1; c <array[n]; c++){
+            if(n % c == 0){
+                a++;                           
+            }
+            if(a != 2){
+                d=((c+n)/c);
+                k=d+c;
+            }else{
+
+            }
+        }*/
+	   //cout<<"/*/*/*/"<<d<<endl;
+	   
+	   
+    			
+	//cout<<"La suma de sus divisores es: "<<k<<endl;
+return 0;
 }
