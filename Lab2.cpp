@@ -117,32 +117,45 @@ void dimensiones(double x, double y, double z){
 }
 
 int ElTres(){
-	int n, d, k;
-	int acum;
-
-	cout<<"Ingrese el Número a utilizar."<<endl;
-	cin>>n;
-	k=0;
     int a = 0;
-    int array[n];
-
-    for(int i=0;i<=n;i++){
+    int n, d, k;
+    int acum = 0;
+    cout<<"Ingrese el Número a utilizar."<<endl;
+    cin>>n;
+    k=0;
+    for(int i=1;i<=n;i++){
         if(n % i == 0){
-            array[i]=i;
-            cout<<array[i]<<endl;   
+            cout<<i<<endl<<endl;
+            //acum = i;
+            d = ((i + n)/i);
+
+            if (Primo(d)){
+                cout<<"Sumo"<<endl;
+                acum+=d;
+                cout<<"***"<<d<<"***"<<endl;  
+            }else{
+                cout<<"No Sumo"<<endl;  
+            }
+                   
+            
+
+            
         }
-    }
+        
+    }           
+    cout<<"La suma de sus divisores es: "<<acum<<endl;
+
             
 
 return 0;
 }
 
-bool primo(int n){
+bool Primo(int n){
 
-    if(n % 2 == 0) return false;
+    //if(n % 2 == 0) return false;
 
-    for(int i = 0; i * i <= n; i += 2){
-        if(i % n == 0) return false;
+    for(int i = 2; i < n; i++){
+        if(n % i == 0) return false;
     }
 
     return true;
